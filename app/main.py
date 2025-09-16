@@ -5,8 +5,8 @@ from transformers import pipeline
 # Carga del modelo y tokenizer
 classifier = pipeline(
     "text-classification",
-    model="app/model/depression_model",
-    tokenizer="app/model/depression_model"
+    model="./model",
+    tokenizer="./model"
 )
 
 app = FastAPI(title="Depression Classifier API")
