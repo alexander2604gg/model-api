@@ -2,13 +2,16 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import pipeline
 
-# Carga del modelo y tokenizer
+
+# Construye la ruta absoluta al modelo
+MODEL_DIR = os.path.join(os.path.dirname(__file__), "model")
+
+# Inicializa el pipeline usando la ruta absoluta
 classifier = pipeline(
     "text-classification",
-    model="./model",
-    tokenizer="./model"
+    model=MODEL_DIR,
+    tokenizer=MODEL_DIR
 )
-
 app = FastAPI(title="Depression Classifier API")
 
 class TextRequest(BaseModel):
